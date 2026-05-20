@@ -1,0 +1,182 @@
+<mvc:View
+    controllerName="esp.launchpad.controller.Launchpad"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+
+    <App>
+        <Page showHeader="true" enableScrolling="true">
+            <customHeader>
+                <Bar design="Header">
+                    <contentLeft>
+                        <Title text="ESP Management System" level="H3"/>
+                    </contentLeft>
+                    <contentRight>
+                        <Text text="External Service Provider Portfolio Management" class="sapUiSmallMarginEnd"/>
+                    </contentRight>
+                </Bar>
+            </customHeader>
+
+            <content>
+                <VBox class="sapUiMediumMargin">
+
+                    <!-- Section: Operational Apps -->
+                    <Title text="Operational Applications" level="H4" class="sapUiSmallMarginBottom"/>
+                    <l:Grid defaultSpan="L3 M4 S6" class="sapUiSmallMarginBottom">
+                        <GenericTile
+                            header="Supplier Management"
+                            subheader="Master data, contacts, classifications"
+                            press="handleTilePress"
+                            class="sapUiTinyMarginEnd sapUiTinyMarginBottom"
+                            frameType="OneByOne">
+                            <tileContent>
+                                <TileContent footer="Fiori Elements">
+                                    <content>
+                                        <ImageContent src="sap-icon://factory"/>
+                                    </content>
+                                </TileContent>
+                            </tileContent>
+                            <customData>
+                                <core:CustomData key="targetUrl" value="/supplier-management/webapp/index.html"/>
+                            </customData>
+                        </GenericTile>
+
+                        <GenericTile
+                            header="Customer Management"
+                            subheader="End-customer master data"
+                            press="handleTilePress"
+                            class="sapUiTinyMarginEnd sapUiTinyMarginBottom"
+                            frameType="OneByOne">
+                            <tileContent>
+                                <TileContent footer="Fiori Elements">
+                                    <content>
+                                        <ImageContent src="sap-icon://customer"/>
+                                    </content>
+                                </TileContent>
+                            </tileContent>
+                            <customData>
+                                <core:CustomData key="targetUrl" value="/customer-management/webapp/index.html"/>
+                            </customData>
+                        </GenericTile>
+
+                        <GenericTile
+                            header="Purchase Orders"
+                            subheader="Orders, items, lifecycle"
+                            press="handleTilePress"
+                            class="sapUiTinyMarginEnd sapUiTinyMarginBottom"
+                            frameType="OneByOne">
+                            <tileContent>
+                                <TileContent footer="Fiori Elements">
+                                    <content>
+                                        <ImageContent src="sap-icon://sales-order"/>
+                                    </content>
+                                </TileContent>
+                            </tileContent>
+                            <customData>
+                                <core:CustomData key="targetUrl" value="/purchase-orders/webapp/index.html"/>
+                            </customData>
+                        </GenericTile>
+
+                        <GenericTile
+                            header="Invoice Management"
+                            subheader="Invoices, approval, billing"
+                            press="handleTilePress"
+                            class="sapUiTinyMarginEnd sapUiTinyMarginBottom"
+                            frameType="OneByOne">
+                            <tileContent>
+                                <TileContent footer="Fiori Elements">
+                                    <content>
+                                        <ImageContent src="sap-icon://money-bills"/>
+                                    </content>
+                                </TileContent>
+                            </tileContent>
+                            <customData>
+                                <core:CustomData key="targetUrl" value="/invoice-management/webapp/index.html"/>
+                            </customData>
+                        </GenericTile>
+                    </l:Grid>
+
+                    <!-- Section: Tracking & Planning -->
+                    <Title text="Tracking &amp; Planning" level="H4" class="sapUiSmallMarginBottom"/>
+                    <l:Grid defaultSpan="L3 M4 S6" class="sapUiSmallMarginBottom">
+                        <GenericTile
+                            header="Consumption Tracking"
+                            subheader="Allocations, FTE, splits"
+                            press="handleTilePress"
+                            class="sapUiTinyMarginEnd sapUiTinyMarginBottom"
+                            frameType="OneByOne">
+                            <tileContent>
+                                <TileContent footer="Fiori Elements">
+                                    <content>
+                                        <ImageContent src="sap-icon://bar-chart"/>
+                                    </content>
+                                </TileContent>
+                            </tileContent>
+                            <customData>
+                                <core:CustomData key="targetUrl" value="/consumption-tracking/webapp/index.html"/>
+                            </customData>
+                        </GenericTile>
+
+                        <GenericTile
+                            header="Financial Planning"
+                            subheader="BP, CFC, exchange rates"
+                            press="handleTilePress"
+                            class="sapUiTinyMarginEnd sapUiTinyMarginBottom"
+                            frameType="OneByOne">
+                            <tileContent>
+                                <TileContent footer="Fiori Elements">
+                                    <content>
+                                        <ImageContent src="sap-icon://lead"/>
+                                    </content>
+                                </TileContent>
+                            </tileContent>
+                            <customData>
+                                <core:CustomData key="targetUrl" value="/financial-planning/webapp/index.html"/>
+                            </customData>
+                        </GenericTile>
+
+                        <GenericTile
+                            header="Analytics Dashboard"
+                            subheader="KPIs, charts, BP vs Actuals"
+                            press="handleTilePress"
+                            class="sapUiTinyMarginEnd sapUiTinyMarginBottom"
+                            frameType="OneByOne">
+                            <tileContent>
+                                <TileContent footer="SAPUI5 Custom">
+                                    <content>
+                                        <ImageContent src="sap-icon://business-objects-experience"/>
+                                    </content>
+                                </TileContent>
+                            </tileContent>
+                            <customData>
+                                <core:CustomData key="targetUrl" value="/analytics-dashboard/webapp/index.html"/>
+                            </customData>
+                        </GenericTile>
+
+                        <GenericTile
+                            header="Data Import"
+                            subheader="Upload, validate, batch import"
+                            press="handleTilePress"
+                            class="sapUiTinyMarginEnd sapUiTinyMarginBottom"
+                            frameType="OneByOne">
+                            <tileContent>
+                                <TileContent footer="SAPUI5 Custom">
+                                    <content>
+                                        <ImageContent src="sap-icon://upload-to-cloud"/>
+                                    </content>
+                                </TileContent>
+                            </tileContent>
+                            <customData>
+                                <core:CustomData key="targetUrl" value="/data-import/webapp/index.html"/>
+                            </customData>
+                        </GenericTile>
+                    </l:Grid>
+
+                </VBox>
+            </content>
+        </Page>
+    </App>
+</mvc:View>

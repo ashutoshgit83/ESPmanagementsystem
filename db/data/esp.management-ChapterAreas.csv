@@ -1,0 +1,5 @@
+ID;code;name;description;domain_ID
+6a2b3c4d-6666-6666-6666-000000000001;S2P;Source to Pay;Source to Pay Chapter Area;5a2b3c4d-5555-5555-5555-000000000002
+6a2b3c4d-6666-6666-6666-000000000002;I2D;Idea to Delivery;Idea to Delivery Chapter Area;5a2b3c4d-5555-5555-5555-000000000001
+6a2b3c4d-6666-6666-6666-000000000003;O2C;Order to Cash;Order to Cash Chapter Area;5a2b3c4d-5555-5555-5555-000000000002
+6a2b3c4d-6666-6666-6666-000000000004;D2O;Deploy to Operate;Deploy to Operate Chapter Area;5a2b3c4d-5555-5555-5555-000000000003

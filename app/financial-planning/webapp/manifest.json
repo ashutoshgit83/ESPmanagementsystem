@@ -1,0 +1,82 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "esp.financial",
+    "type": "application",
+    "title": "Financial Planning",
+    "description": "Manage business plans, forecasts, and exchange rates",
+    "applicationVersion": { "version": "1.0.0" },
+    "dataSources": {
+      "mainService": {
+        "uri": "../odata/v4/admin/",
+        "type": "OData",
+        "settings": { "odataVersion": "4.0" }
+      }
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.120.45",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "models": {
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ForecastCyclesList",
+          "target": "ForecastCyclesList"
+        },
+        {
+          "pattern": "ForecastCycles({key}):?query:",
+          "name": "ForecastCyclesObjectPage",
+          "target": "ForecastCyclesObjectPage"
+        }
+      ],
+      "targets": {
+        "ForecastCyclesList": {
+          "type": "Component",
+          "id": "ForecastCyclesList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/ForecastCycles",
+              "variantManagement": "Page",
+              "navigation": {
+                "ForecastCycles": {
+                  "detail": { "route": "ForecastCyclesObjectPage" }
+                }
+              },
+              "initialLoad": "Enabled"
+            }
+          }
+        },
+        "ForecastCyclesObjectPage": {
+          "type": "Component",
+          "id": "ForecastCyclesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "contextPath": "/ForecastCycles",
+              "editableHeaderContent": false
+            }
+          }
+        }
+      }
+    }
+  }
+}

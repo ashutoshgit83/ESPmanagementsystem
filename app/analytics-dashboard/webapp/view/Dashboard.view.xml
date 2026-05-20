@@ -1,0 +1,248 @@
+<mvc:View
+    controllerName="esp.analytics.controller.Dashboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:vizData="sap.viz.ui5.data"
+    xmlns:vizFeed="sap.viz.ui5.controls.common.feeds">
+
+    <Page title="ESP Analytics Dashboard" showHeader="true" enableScrolling="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title text="ESP Portfolio Analytics" level="H3"/>
+                </contentLeft>
+                <contentRight>
+                    <Button icon="sap-icon://refresh" press=".onRefresh" tooltip="Refresh"/>
+                    <Button icon="sap-icon://download" press=".onExport" text="Export CSV"/>
+                </contentRight>
+            </Bar>
+        </customHeader>
+
+        <content>
+            <VBox class="sapUiSmallMargin">
+
+                <!-- KPI TILES -->
+                <HBox wrap="Wrap" class="sapUiSmallMarginBottom">
+                    <GenericTile header="Active Suppliers" subheader="Registered ESPs" class="sapUiTinyMarginEnd sapUiTinyMarginBottom">
+                        <TileContent><NumericContent value="{dashboard>/kpis/supplierCount}" valueColor="Good"/></TileContent>
+                    </GenericTile>
+                    <GenericTile header="Open Contracts" subheader="Active POs" class="sapUiTinyMarginEnd sapUiTinyMarginBottom">
+                        <TileContent><NumericContent value="{dashboard>/kpis/activePoCount}" valueColor="Good"/></TileContent>
+                    </GenericTile>
+                    <GenericTile header="PO Value" subheader="Active orders" class="sapUiTinyMarginEnd sapUiTinyMarginBottom">
+                        <TileContent><NumericContent value="{dashboard>/kpis/totalPoValue}" scale="K EUR" valueColor="Neutral"/></TileContent>
+                    </GenericTile>
+                    <GenericTile header="Invoiced" subheader="Total billed" class="sapUiTinyMarginEnd sapUiTinyMarginBottom">
+                        <TileContent><NumericContent value="{dashboard>/kpis/totalInvoiceValue}" scale="K EUR" valueColor="Neutral"/></TileContent>
+                    </GenericTile>
+                    <GenericTile header="Consumption" subheader="Used vs ordered" class="sapUiTinyMarginEnd sapUiTinyMarginBottom">
+                        <TileContent><NumericContent value="{dashboard>/kpis/consumptionRate}" scale="%" valueColor="{= ${dashboard>/kpis/consumptionRate} > 80 ? 'Critical' : 'Good'}"/></TileContent>
+                    </GenericTile>
+                    <GenericTile header="Consultants" subheader="Deployed" class="sapUiTinyMarginEnd sapUiTinyMarginBottom">
+                        <TileContent><NumericContent value="{dashboard>/kpis/consultantCount}" valueColor="Good"/></TileContent>
+                    </GenericTile>
+                    <GenericTile header="Avg Hourly Rate" subheader="All PO items" class="sapUiTinyMarginBottom">
+                        <TileContent><NumericContent value="{dashboard>/kpis/avgHourlyRate}" scale="EUR/h" valueColor="Neutral"/></TileContent>
+                    </GenericTile>
+                </HBox>
+
+                <!-- DRILL-DOWN PANEL -->
+                <Panel headerText="{dashboard>/drillDown/title}" expandable="false"
+                       visible="{dashboard>/drillDown/visible}" class="sapUiSmallMarginBottom">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <Title text="{dashboard>/drillDown/title}"/>
+                            <ToolbarSpacer/>
+                            <Button icon="sap-icon://decline" press=".onCloseDrillDown"/>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <Table items="{dashboard>/drillDown/data}" growing="true" growingThreshold="20">
+                        <columns>
+                            <Column><Text text="Col 1"/></Column>
+                            <Column><Text text="Col 2"/></Column>
+                            <Column><Text text="Col 3"/></Column>
+                            <Column><Text text="Col 4"/></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{dashboard>col1}"/>
+                                    <Text text="{dashboard>col2}"/>
+                                    <Text text="{dashboard>col3}"/>
+                                    <Text text="{dashboard>col4}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Panel>
+
+                <!-- CHARTS ROW 1 -->
+                <HBox wrap="Wrap" class="sapUiSmallMarginBottom">
+                    <VBox class="sapUiSmallMarginEnd" width="48%">
+                        <Panel headerText="PO by Status (click to drill down)">
+                            <viz:VizFrame id="chartPoStatus" vizType="donut" width="100%" height="280px" selectData=".onChartPoStatusSelect">
+                                <viz:dataset>
+                                    <vizData:FlattenedDataset data="{dashboard>/charts/poByStatus}">
+                                        <vizData:dimensions>
+                                            <vizData:DimensionDefinition name="Status" value="{dashboard>status}"/>
+                                        </vizData:dimensions>
+                                        <vizData:measures>
+                                            <vizData:MeasureDefinition name="Count" value="{dashboard>count}"/>
+                                        </vizData:measures>
+                                    </vizData:FlattenedDataset>
+                                </viz:dataset>
+                                <viz:feeds>
+                                    <vizFeed:FeedItem type="Measure" uid="size" values="Count"/>
+                                    <vizFeed:FeedItem type="Dimension" uid="color" values="Status"/>
+                                </viz:feeds>
+                            </viz:VizFrame>
+                        </Panel>
+                    </VBox>
+                    <VBox width="48%">
+                        <Panel headerText="Invoices by Status (click to drill down)">
+                            <viz:VizFrame id="chartInvStatus" vizType="donut" width="100%" height="280px" selectData=".onChartInvStatusSelect">
+                                <viz:dataset>
+                                    <vizData:FlattenedDataset data="{dashboard>/charts/invoiceByStatus}">
+                                        <vizData:dimensions>
+                                            <vizData:DimensionDefinition name="Status" value="{dashboard>status}"/>
+                                        </vizData:dimensions>
+                                        <vizData:measures>
+                                            <vizData:MeasureDefinition name="Count" value="{dashboard>count}"/>
+                                        </vizData:measures>
+                                    </vizData:FlattenedDataset>
+                                </viz:dataset>
+                                <viz:feeds>
+                                    <vizFeed:FeedItem type="Measure" uid="size" values="Count"/>
+                                    <vizFeed:FeedItem type="Dimension" uid="color" values="Status"/>
+                                </viz:feeds>
+                            </viz:VizFrame>
+                        </Panel>
+                    </VBox>
+                </HBox>
+
+                <!-- CHARTS ROW 2 -->
+                <HBox wrap="Wrap" class="sapUiSmallMarginBottom">
+                    <VBox class="sapUiSmallMarginEnd" width="48%">
+                        <Panel headerText="PO Value by Supplier (click to drill down)">
+                            <viz:VizFrame id="chartSupplierSpend" vizType="bar" width="100%" height="280px" selectData=".onChartSupplierSelect">
+                                <viz:dataset>
+                                    <vizData:FlattenedDataset data="{dashboard>/charts/spendBySupplier}">
+                                        <vizData:dimensions>
+                                            <vizData:DimensionDefinition name="Supplier" value="{dashboard>supplier}"/>
+                                        </vizData:dimensions>
+                                        <vizData:measures>
+                                            <vizData:MeasureDefinition name="Value (EUR)" value="{dashboard>value}"/>
+                                        </vizData:measures>
+                                    </vizData:FlattenedDataset>
+                                </viz:dataset>
+                                <viz:feeds>
+                                    <vizFeed:FeedItem type="Measure" uid="valueAxis" values="Value (EUR)"/>
+                                    <vizFeed:FeedItem type="Dimension" uid="categoryAxis" values="Supplier"/>
+                                </viz:feeds>
+                            </viz:VizFrame>
+                        </Panel>
+                    </VBox>
+                    <VBox width="48%">
+                        <Panel headerText="Consumption by Chapter Area (click to drill down)">
+                            <viz:VizFrame id="chartAreaConsumption" vizType="bar" width="100%" height="280px" selectData=".onChartAreaSelect">
+                                <viz:dataset>
+                                    <vizData:FlattenedDataset data="{dashboard>/charts/consumptionByArea}">
+                                        <vizData:dimensions>
+                                            <vizData:DimensionDefinition name="Chapter Area" value="{dashboard>area}"/>
+                                        </vizData:dimensions>
+                                        <vizData:measures>
+                                            <vizData:MeasureDefinition name="Consumed (EUR)" value="{dashboard>value}"/>
+                                        </vizData:measures>
+                                    </vizData:FlattenedDataset>
+                                </viz:dataset>
+                                <viz:feeds>
+                                    <vizFeed:FeedItem type="Measure" uid="valueAxis" values="Consumed (EUR)"/>
+                                    <vizFeed:FeedItem type="Dimension" uid="categoryAxis" values="Chapter Area"/>
+                                </viz:feeds>
+                            </viz:VizFrame>
+                        </Panel>
+                    </VBox>
+                </HBox>
+
+                <!-- BP vs CFC vs ACTUALS -->
+                <Panel headerText="BP vs CFC vs Actuals — by Chapter Area" expandable="true" expanded="true" class="sapUiSmallMarginBottom">
+                    <viz:VizFrame id="chartBpCfcActuals" vizType="column" width="100%" height="320px">
+                        <viz:dataset>
+                            <vizData:FlattenedDataset data="{dashboard>/bpCfcActuals}">
+                                <vizData:dimensions>
+                                    <vizData:DimensionDefinition name="Chapter Area" value="{dashboard>area}"/>
+                                </vizData:dimensions>
+                                <vizData:measures>
+                                    <vizData:MeasureDefinition name="Business Plan" value="{dashboard>bp}"/>
+                                    <vizData:MeasureDefinition name="CFC Forecast" value="{dashboard>cfc}"/>
+                                    <vizData:MeasureDefinition name="Actuals" value="{dashboard>actuals}"/>
+                                </vizData:measures>
+                            </vizData:FlattenedDataset>
+                        </viz:dataset>
+                        <viz:feeds>
+                            <vizFeed:FeedItem type="Measure" uid="valueAxis" values="Business Plan,CFC Forecast,Actuals"/>
+                            <vizFeed:FeedItem type="Dimension" uid="categoryAxis" values="Chapter Area"/>
+                        </viz:feeds>
+                    </viz:VizFrame>
+                </Panel>
+
+                <!-- CONSULTANTS TABLE -->
+                <Panel headerText="Consultant Deployment by Chapter Area" expandable="true" expanded="true" class="sapUiSmallMarginBottom">
+                    <Table items="{dashboard>/charts/consultantsByArea}">
+                        <columns>
+                            <Column width="25%"><Text text="Chapter Area"/></Column>
+                            <Column width="15%"><Text text="Count"/></Column>
+                            <Column><Text text="Consultants"/></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{dashboard>area}"/>
+                                    <ObjectNumber number="{dashboard>count}" emphasized="true"/>
+                                    <Text text="{dashboard>names}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Panel>
+
+                <!-- ORDERS TABLE -->
+                <Panel headerText="All Purchase Orders" expandable="true" expanded="true">
+                    <Table id="tableActiveOrders" items="{dashboard>/tables/activeOrders}" growing="true" growingThreshold="10">
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <Title text="Orders"/>
+                                <ToolbarSpacer/>
+                                <SearchField placeholder="Search..." width="250px" liveChange=".onSearchOrders"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column><Text text="PO Number"/></Column>
+                            <Column><Text text="Supplier"/></Column>
+                            <Column><Text text="Type"/></Column>
+                            <Column hAlign="End"><Text text="Net Value"/></Column>
+                            <Column><Text text="Status"/></Column>
+                            <Column><Text text="End Date"/></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{dashboard>poNumber}"/>
+                                    <Text text="{dashboard>supplierName}"/>
+                                    <Text text="{dashboard>orderType}"/>
+                                    <ObjectNumber number="{dashboard>totalNetValue}" unit="{dashboard>currency}"/>
+                                    <ObjectStatus text="{dashboard>status}" state="{dashboard>statusState}"/>
+                                    <Text text="{dashboard>deliveryEndDate}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Panel>
+
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

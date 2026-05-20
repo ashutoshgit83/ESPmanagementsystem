@@ -1,0 +1,70 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "esp.dataimport",
+    "type": "application",
+    "title": "ESP Data Import",
+    "description": "Upload and import data from external systems",
+    "applicationVersion": { "version": "1.0.0" },
+    "dataSources": {
+      "adminService": {
+        "uri": "../odata/v4/admin/",
+        "type": "OData",
+        "settings": { "odataVersion": "4.0" }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": { "icon": "sap-icon://upload" }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "esp.dataimport.view.App",
+      "type": "XML",
+      "id": "app"
+    },
+    "dependencies": {
+      "minUI5Version": "1.120.45",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.ui.layout": {},
+        "sap.ui.unified": {},
+        "sap.ui.table": {}
+      }
+    },
+    "models": {
+      "": {
+        "dataSource": "adminService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "import": {
+        "type": "sap.ui.model.json.JSONModel",
+        "settings": {}
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "type": "View",
+        "viewType": "XML",
+        "viewPath": "esp.dataimport.view",
+        "controlId": "app",
+        "controlAggregation": "pages"
+      },
+      "routes": [
+        { "pattern": "", "name": "import", "target": "import" }
+      ],
+      "targets": {
+        "import": { "viewName": "Import", "viewLevel": 1 }
+      }
+    }
+  }
+}

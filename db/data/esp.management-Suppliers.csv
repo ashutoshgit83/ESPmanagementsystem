@@ -1,0 +1,6 @@
+ID;supplierNumber;supplierName;isOem;isRateCard;rateCardScope;country_code;hcbLcb;billingEntityCountry_code;serviceDeliveryCountry_code;tier;primaryContactName;primaryContactEmail
+a1000001-aaaa-bbbb-cccc-000000000001;SUP-001;Accenture GmbH;false;true;Global;DE;HCB;DE;DE;Platinum;Hans Mueller;hans.mueller@accenture.com
+a1000001-aaaa-bbbb-cccc-000000000002;SUP-002;TCS India Pvt Ltd;false;true;Regional;IN;LCB;IN;IN;Gold;Rajesh Kumar;rajesh.kumar@tcs.com
+a1000001-aaaa-bbbb-cccc-000000000003;SUP-003;SAP SE;true;false;;DE;HCB;DE;DE;Platinum;Maria Schmidt;maria.schmidt@sap.com
+a1000001-aaaa-bbbb-cccc-000000000004;SUP-004;Infosys BPO;false;true;Regional;IN;LCB;IN;PL;Gold;Priya Sharma;priya.sharma@infosys.com
+a1000001-aaaa-bbbb-cccc-000000000005;SUP-005;Capgemini SE;false;true;Global;FR;HCB;FR;FR;Silver;Pierre Dupont;pierre.dupont@capgemini.com

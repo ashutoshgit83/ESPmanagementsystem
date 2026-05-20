@@ -1,0 +1,5 @@
+ID;invoice_ID;lineNumber;poItem_ID;allocation_ID;description;quantity;unitPrice;netValue;currency_code
+il000001-aaaa-bbbb-cccc-000000000001;e1000001-aaaa-bbbb-cccc-000000000001;10;d1000001-aaaa-bbbb-cccc-000000000001;ca000001-aaaa-bbbb-cccc-000000000001;SAP S/4HANA Development - Feb/Mar 2025;360.00;125.00;45000.00;EUR
+il000001-aaaa-bbbb-cccc-000000000002;e1000001-aaaa-bbbb-cccc-000000000002;10;d1000001-aaaa-bbbb-cccc-000000000003;ca000001-aaaa-bbbb-cccc-000000000003;Java Cloud Development - Q1 2025;355.00;90.00;32000.00;EUR
+il000001-aaaa-bbbb-cccc-000000000003;e1000001-aaaa-bbbb-cccc-000000000003;10;d1000001-aaaa-bbbb-cccc-000000000004;;Fixed Price Delivery - Phase 1;1.00;95000.00;95000.00;EUR
+il000001-aaaa-bbbb-cccc-000000000004;e1000001-aaaa-bbbb-cccc-000000000004;10;d1000001-aaaa-bbbb-cccc-000000000005;;BTP Integration Services - April;280.00;100.00;28000.00;EUR

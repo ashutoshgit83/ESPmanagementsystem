@@ -1,0 +1,5 @@
+ID;firstName;lastName;email;supplierRef_ID;skillProfile;isActive
+f1000001-aaaa-bbbb-cccc-000000000001;Michael;Braun;m.braun@accenture.com;a1000001-aaaa-bbbb-cccc-000000000001;SAP S/4HANA ABAP Development;true
+f1000001-aaaa-bbbb-cccc-000000000002;Arun;Patel;a.patel@tcs.com;a1000001-aaaa-bbbb-cccc-000000000002;Java Cloud Native Development;true
+f1000001-aaaa-bbbb-cccc-000000000003;Sophie;Martin;s.martin@capgemini.com;a1000001-aaaa-bbbb-cccc-000000000005;Data Engineering & Analytics;true
+f1000001-aaaa-bbbb-cccc-000000000004;Deepak;Gupta;d.gupta@infosys.com;a1000001-aaaa-bbbb-cccc-000000000004;SAP BTP Integration;true

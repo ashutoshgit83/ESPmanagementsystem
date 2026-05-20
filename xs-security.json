@@ -1,0 +1,106 @@
+{
+  "xsappname": "esp-management",
+  "tenant-mode": "dedicated",
+  "description": "ESP Management System - Security Configuration",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.ChapterAreaMember",
+      "description": "Chapter Area Member - Create orders, view area data, add notes"
+    },
+    {
+      "name": "$XSAPPNAME.ChapterAreaManager",
+      "description": "Chapter Area Manager - Approve/reject orders and invoices for area"
+    },
+    {
+      "name": "$XSAPPNAME.GPM_Backoffice",
+      "description": "GPM/Backoffice - Global read, analytics, portfolio oversight"
+    },
+    {
+      "name": "$XSAPPNAME.SystemAdmin",
+      "description": "System Administrator - Full CRUD, config, integration management"
+    }
+  ],
+  "attributes": [
+    {
+      "name": "ChapterArea",
+      "description": "Chapter Area assignment for data filtering",
+      "valueType": "string"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "ChapterAreaMember",
+      "description": "ESP Chapter Area Member",
+      "scope-references": [
+        "$XSAPPNAME.ChapterAreaMember"
+      ],
+      "attribute-references": [
+        "ChapterArea"
+      ]
+    },
+    {
+      "name": "ChapterAreaManager",
+      "description": "ESP Chapter Area Manager",
+      "scope-references": [
+        "$XSAPPNAME.ChapterAreaMember",
+        "$XSAPPNAME.ChapterAreaManager"
+      ],
+      "attribute-references": [
+        "ChapterArea"
+      ]
+    },
+    {
+      "name": "GPM_Backoffice",
+      "description": "ESP GPM / Backoffice",
+      "scope-references": [
+        "$XSAPPNAME.ChapterAreaMember",
+        "$XSAPPNAME.GPM_Backoffice"
+      ]
+    },
+    {
+      "name": "SystemAdmin",
+      "description": "ESP System Administrator",
+      "scope-references": [
+        "$XSAPPNAME.ChapterAreaMember",
+        "$XSAPPNAME.ChapterAreaManager",
+        "$XSAPPNAME.GPM_Backoffice",
+        "$XSAPPNAME.SystemAdmin"
+      ]
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "ESP_ChapterAreaMember",
+      "description": "ESP - Chapter Area Member",
+      "role-template-references": [
+        "$XSAPPNAME.ChapterAreaMember"
+      ]
+    },
+    {
+      "name": "ESP_ChapterAreaManager",
+      "description": "ESP - Chapter Area Manager",
+      "role-template-references": [
+        "$XSAPPNAME.ChapterAreaManager"
+      ]
+    },
+    {
+      "name": "ESP_GPM_Backoffice",
+      "description": "ESP - GPM / Backoffice",
+      "role-template-references": [
+        "$XSAPPNAME.GPM_Backoffice"
+      ]
+    },
+    {
+      "name": "ESP_SystemAdmin",
+      "description": "ESP - System Administrator",
+      "role-template-references": [
+        "$XSAPPNAME.SystemAdmin"
+      ]
+    }
+  ],
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://*.cfapps.*.hana.ondemand.com/**"
+    ]
+  }
+}

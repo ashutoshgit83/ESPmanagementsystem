@@ -1,0 +1,5 @@
+ID;code;name;year;startDate;endDate;isCurrent
+fc000001-aaaa-bbbb-cccc-000000000001;CFC1;CFC1 2025 - Q1 Forecast;2025;2025-01-01;2025-03-31;false
+fc000001-aaaa-bbbb-cccc-000000000002;CFC2;CFC2 2025 - Q2 Forecast;2025;2025-04-01;2025-06-30;true
+fc000001-aaaa-bbbb-cccc-000000000003;CFC3;CFC3 2025 - Q3 Forecast;2025;2025-07-01;2025-09-30;false
+fc000001-aaaa-bbbb-cccc-000000000004;BP2025;Business Plan 2025;2025;2025-01-01;2025-12-31;false

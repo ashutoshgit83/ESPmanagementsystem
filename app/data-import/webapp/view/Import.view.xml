@@ -1,0 +1,203 @@
+<mvc:View
+    controllerName="esp.dataimport.controller.Import"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns:u="sap.ui.unified"
+    xmlns:core="sap.ui.core">
+
+    <Page title="Data Import" showHeader="true" enableScrolling="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title text="ESP Data Import &amp; Ingestion" level="H3"/>
+                </contentLeft>
+                <contentRight>
+                    <Button text="Import History" icon="sap-icon://history" press=".onShowHistory"/>
+                </contentRight>
+            </Bar>
+        </customHeader>
+
+        <content>
+            <VBox class="sapUiMediumMargin">
+
+                <!-- STEP 1: Configuration -->
+                <Panel headerText="Step 1: Import Configuration" expandable="false" class="sapUiSmallMarginBottom">
+                    <l:Grid defaultSpan="L4 M6 S12" class="sapUiSmallMargin">
+                        <VBox>
+                            <Label text="Source System" required="true"/>
+                            <Select id="selectSource" selectedKey="{import>/config/sourceSystem}"
+                                    items="{import>/sources}">
+                                <core:Item key="{import>key}" text="{import>text}"/>
+                            </Select>
+                        </VBox>
+                        <VBox>
+                            <Label text="Entity Type" required="true"/>
+                            <Select id="selectEntity" selectedKey="{import>/config/entityType}"
+                                    change=".onEntityTypeChange"
+                                    items="{import>/entityTypes}">
+                                <core:Item key="{import>key}" text="{import>text}"/>
+                            </Select>
+                        </VBox>
+                        <VBox>
+                            <Label text="Batch Name"/>
+                            <Input value="{import>/config/batchName}" placeholder="e.g., CID3 Extract May 2025"/>
+                        </VBox>
+                    </l:Grid>
+                </Panel>
+
+                <!-- STEP 2: File Upload -->
+                <Panel headerText="Step 2: Upload File (CSV/Excel)" expandable="false" class="sapUiSmallMarginBottom">
+                    <VBox class="sapUiSmallMargin">
+                        <u:FileUploader id="fileUploader"
+                            name="importFile"
+                            fileType="csv,xlsx,xls"
+                            typeMissmatch=".onTypeMismatch"
+                            change=".onFileChange"
+                            placeholder="Choose a CSV or Excel file..."
+                            width="100%"
+                            buttonText="Browse"/>
+                        <HBox class="sapUiSmallMarginTop">
+                            <Button text="Parse &amp; Validate" icon="sap-icon://validate" press=".onParseFile"
+                                    type="Emphasized" enabled="{import>/fileReady}"/>
+                            <Button text="Download Template" icon="sap-icon://download" press=".onDownloadTemplate"
+                                    class="sapUiSmallMarginBegin"/>
+                        </HBox>
+                    </VBox>
+                </Panel>
+
+                <!-- STEP 3: Validation Results -->
+                <Panel headerText="Step 3: Validation Results" expandable="false"
+                       visible="{= ${import>/validation/total} > 0}" class="sapUiSmallMarginBottom">
+                    <VBox class="sapUiSmallMargin">
+                        <!-- Summary -->
+                        <HBox class="sapUiSmallMarginBottom">
+                            <ObjectStatus text="Total Rows: {import>/validation/total}" class="sapUiSmallMarginEnd"/>
+                            <ObjectStatus text="Valid: {import>/validation/valid}" state="Success" class="sapUiSmallMarginEnd"/>
+                            <ObjectStatus text="Errors: {import>/validation/errors}" state="Error" class="sapUiSmallMarginEnd"/>
+                            <ObjectStatus text="Warnings: {import>/validation/warnings}" state="Warning"/>
+                        </HBox>
+
+                        <!-- Error List -->
+                        <List visible="{= ${import>/validation/errors} > 0}"
+                              headerText="Validation Errors"
+                              items="{import>/validation/errorList}">
+                            <StandardListItem
+                                title="Row {import>row}: {import>message}"
+                                description="Field: {import>field}"
+                                icon="sap-icon://error"
+                                iconInset="false"
+                                highlight="Error"/>
+                        </List>
+
+                        <!-- Warning List -->
+                        <List visible="{= ${import>/validation/warnings} > 0}"
+                              headerText="Warnings"
+                              items="{import>/validation/warningList}">
+                            <StandardListItem
+                                title="Row {import>row}: {import>message}"
+                                description="Field: {import>field}"
+                                icon="sap-icon://alert"
+                                iconInset="false"
+                                highlight="Warning"/>
+                        </List>
+                    </VBox>
+                </Panel>
+
+                <!-- STEP 4: Preview & Import -->
+                <Panel headerText="Step 4: Data Preview &amp; Import" expandable="false"
+                       visible="{= ${import>/validation/total} > 0}" class="sapUiSmallMarginBottom">
+                    <VBox class="sapUiSmallMargin">
+                        <Table items="{import>/preview}" growing="true" growingThreshold="20">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <Title text="Preview (first 50 rows)"/>
+                                    <ToolbarSpacer/>
+                                    <Label text="{import>/validation/valid} records ready for import"/>
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column><Text text="Row"/></Column>
+                                <Column><Text text="Status"/></Column>
+                                <Column><Text text="Key Field"/></Column>
+                                <Column><Text text="Name / Description"/></Column>
+                                <Column><Text text="Details"/></Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem highlight="{= ${import>status} === 'Valid' ? 'Success' : 'Error'}">
+                                    <cells>
+                                        <Text text="{import>row}"/>
+                                        <ObjectStatus text="{import>status}" state="{= ${import>status} === 'Valid' ? 'Success' : 'Error'}"/>
+                                        <Text text="{import>keyField}"/>
+                                        <Text text="{import>nameField}"/>
+                                        <Text text="{import>details}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+
+                        <HBox justifyContent="End" class="sapUiMediumMarginTop">
+                            <Button text="Import Valid Records" icon="sap-icon://upload-to-cloud"
+                                    type="Emphasized" press=".onExecuteImport"
+                                    enabled="{= ${import>/validation/valid} > 0}"/>
+                        </HBox>
+                    </VBox>
+                </Panel>
+
+                <!-- Import Progress -->
+                <Panel headerText="Import Progress" expandable="false"
+                       visible="{import>/importing}" class="sapUiSmallMarginBottom">
+                    <VBox class="sapUiSmallMargin" alignItems="Center">
+                        <BusyIndicator size="3rem" class="sapUiSmallMarginBottom"/>
+                        <Text text="Importing {import>/importProgress/current} of {import>/importProgress/total}..."
+                              class="sapUiSmallMarginBottom"/>
+                        <ProgressIndicator percentValue="{import>/importProgress/percent}"
+                                           displayValue="{import>/importProgress/percent}%"
+                                           state="Information" width="80%"/>
+                    </VBox>
+                </Panel>
+
+                <!-- Import Complete -->
+                <Panel headerText="Import Complete" expandable="false"
+                       visible="{import>/importComplete}" class="sapUiSmallMarginBottom">
+                    <MessageStrip text="Import completed successfully! {import>/importResult/success} records imported, {import>/importResult/failed} failed."
+                                  type="{= ${import>/importResult/failed} > 0 ? 'Warning' : 'Success'}"
+                                  showIcon="true" class="sapUiSmallMargin"/>
+                </Panel>
+
+                <!-- IMPORT HISTORY -->
+                <Panel id="panelHistory" headerText="Import History" expandable="true" expanded="false" class="sapUiSmallMarginBottom">
+                    <Table items="{/ImportBatches}" growing="true" growingThreshold="10">
+                        <columns>
+                            <Column><Text text="Batch Name"/></Column>
+                            <Column><Text text="Source"/></Column>
+                            <Column><Text text="Date"/></Column>
+                            <Column><Text text="Status"/></Column>
+                            <Column><Text text="Total"/></Column>
+                            <Column><Text text="Success"/></Column>
+                            <Column><Text text="Errors"/></Column>
+                            <Column><Text text="Imported By"/></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{batchName}"/>
+                                    <Text text="{sourceSystem}"/>
+                                    <Text text="{path: 'importDate', type: 'sap.ui.model.type.DateTime', formatOptions: {style: 'medium'}}"/>
+                                    <ObjectStatus text="{status}"
+                                        state="{= ${status} === 'Completed' ? 'Success' : (${status} === 'Failed' ? 'Error' : 'Warning')}"/>
+                                    <Text text="{totalRecords}"/>
+                                    <Text text="{successCount}"/>
+                                    <Text text="{errorCount}"/>
+                                    <Text text="{importedBy}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Panel>
+
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

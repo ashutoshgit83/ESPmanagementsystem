@@ -1,0 +1,5 @@
+ID;code;name;description
+2a2b3c4d-2222-2222-2222-000000000001;TM_SVC;T&M Service;Time and material based service delivery
+2a2b3c4d-2222-2222-2222-000000000002;FIXED_SVC;Fixed Service;Fixed scope service delivery
+2a2b3c4d-2222-2222-2222-000000000003;LICENSE;License;Software or technology license
+2a2b3c4d-2222-2222-2222-000000000004;OTHER;Other;Other item types
