@@ -1,0 +1,4 @@
+ID;batchName;sourceSystem;importDate;status;totalRecords;successCount;errorCount;importedBy;logMessages
+1b000001-aaaa-bbbb-cccc-000000000001;CID3 Supplier Master Extract Q1 2025;CID3;2025-01-20T08:00:00Z;Completed;5;5;0;admin;All 5 supplier records imported successfully
+1b000001-aaaa-bbbb-cccc-000000000002;MyBuy PO Extract Feb 2025;MyBuy;2025-02-15T10:30:00Z;Completed;3;3;0;admin;3 purchase orders imported from MyBuy
+1b000001-aaaa-bbbb-cccc-000000000003;PICOS Invoice Extract Mar 2025;PICOS;2025-03-20T14:00:00Z;Completed with Errors;4;3;1;manager;3 invoices imported. 1 failed: duplicate invoice number INV-DUP-001

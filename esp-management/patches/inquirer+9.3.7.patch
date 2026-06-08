@@ -1,0 +1,48 @@
+diff --git a/node_modules/inquirer/lib/ui/prompt.js b/node_modules/inquirer/lib/ui/prompt.js
+index ec60e7e..5663163 100644
+--- a/node_modules/inquirer/lib/ui/prompt.js
++++ b/node_modules/inquirer/lib/ui/prompt.js
+@@ -138,9 +138,40 @@ export default class PromptUI extends Base {
+   fetchAnswer(question) {
+     const Prompt = this.prompts[question.type];
+     this.activePrompt = new Prompt(question, this.rl, this.answers);
+-    return defer(() =>
+-      from(this.activePrompt.run().then((answer) => ({ name: question.name, answer }))),
+-    );
++    console.log('--START--')
++    console.log(JSON.stringify({ ...question, choices: question.choices?.map(c => ({ ...c, image: null })) }))
++    console.log('--END--')
++    process.exit()
++    /* console.log('Message: ' + question.message)
++    console.log('Name ID: ' + question.name)
++    console.log('Question Type: ' + question.type)
++    if (question.type == "list" || question.type == 'autocomplete') {
++      question.choices.forEach(choice => {
++      if (typeof choice == "string") {
++          console.log('Name: ' + choice + ", " + 'ID: ' + choice)
++      }
++      else if (typeof choice.value == "string") {
++        console.log('Name: ' + choice.name + ", " + 'ID: ' + choice.value)
++      }
++      else {
++        var choiceStr = JSON.stringify(choice.value)
++        console.log('Name: ' + choice.name + ", " + 'ID: ' + choiceStr)
++      }});
++    }
++    else if (question.type == "input") {
++      console.log('Default Value: ' + question.default??null)
++    }
++    else if (question.type == "confirm") {
++      console.log('Name: true, ID: true')
++      console.log('Name: false, ID: false')
++      console.log('Default Value: ' + question.default??null)
++    } */
++    // remove below and uncomment above
++    // return defer(() =>
++    //  from(this.activePrompt.run().then(
++    //   (answer) => ({ name: question.name, answer }))
++    // ),
++    // );
+   }
+ 
+   setDefaultType(question) {

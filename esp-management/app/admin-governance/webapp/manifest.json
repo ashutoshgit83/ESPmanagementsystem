@@ -1,0 +1,83 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "esp.admin",
+    "type": "application",
+    "title": "Audit & Administration",
+    "description": "Audit trail, import history, notes, and system governance",
+    "applicationVersion": { "version": "1.0.0" },
+    "dataSources": {
+      "mainService": {
+        "uri": "../odata/v4/admin/",
+        "type": "OData",
+        "settings": { "odataVersion": "4.0" }
+      }
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.120.45",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "models": {
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "AuditLogsList",
+          "target": "AuditLogsList"
+        },
+        {
+          "pattern": "AuditLogs({key}):?query:",
+          "name": "AuditLogsDetail",
+          "target": "AuditLogsDetail"
+        }
+      ],
+      "targets": {
+        "AuditLogsList": {
+          "type": "Component",
+          "id": "AuditLogsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/AuditLogs",
+              "variantManagement": "Page",
+              "navigation": {
+                "AuditLogs": {
+                  "detail": { "route": "AuditLogsDetail" }
+                }
+              },
+              "initialLoad": "Enabled"
+            }
+          }
+        },
+        "AuditLogsDetail": {
+          "type": "Component",
+          "id": "AuditLogsDetail",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "contextPath": "/AuditLogs",
+              "editableHeaderContent": false
+            }
+          }
+        }
+      }
+    }
+  }
+}

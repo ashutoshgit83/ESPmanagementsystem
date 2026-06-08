@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <VBox items="{chat>/quickReplies}" width="100%">
+        <HBox wrap="Wrap">
+            <items>
+                <Button text="{chat>text}" press=".onQuickReply" type="Ghost"
+                    class="sapUiTinyMarginEnd sapUiTinyMarginBottom"
+                    customData:key="{chat>value}"/>
+            </items>
+        </HBox>
+    </VBox>
+</core:FragmentDefinition>

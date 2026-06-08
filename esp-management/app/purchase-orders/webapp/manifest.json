@@ -1,0 +1,111 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "esp.orders",
+    "type": "application",
+    "title": "Purchase Order Management",
+    "description": "Manage purchase orders and contract lifecycle",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "../odata/v4/orders/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.120.45",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "models": {
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "PurchaseOrdersList",
+          "target": "PurchaseOrdersList"
+        },
+        {
+          "pattern": "PurchaseOrders({key}):?query:",
+          "name": "PurchaseOrdersObjectPage",
+          "target": "PurchaseOrdersObjectPage"
+        },
+        {
+          "pattern": "PurchaseOrders({key})/items({key2}):?query:",
+          "name": "PurchaseOrderItemsObjectPage",
+          "target": "PurchaseOrderItemsObjectPage"
+        }
+      ],
+      "targets": {
+        "PurchaseOrdersList": {
+          "type": "Component",
+          "id": "PurchaseOrdersList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/PurchaseOrders",
+              "variantManagement": "Page",
+              "navigation": {
+                "PurchaseOrders": {
+                  "detail": {
+                    "route": "PurchaseOrdersObjectPage"
+                  }
+                }
+              },
+              "initialLoad": "Enabled"
+            }
+          }
+        },
+        "PurchaseOrdersObjectPage": {
+          "type": "Component",
+          "id": "PurchaseOrdersObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "contextPath": "/PurchaseOrders",
+              "editableHeaderContent": false,
+              "navigation": {
+                "items": {
+                  "detail": {
+                    "route": "PurchaseOrderItemsObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "PurchaseOrderItemsObjectPage": {
+          "type": "Component",
+          "id": "PurchaseOrderItemsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "contextPath": "/PurchaseOrders/items"
+            }
+          }
+        }
+      }
+    },
+    "flexEnabled": false
+  }
+}

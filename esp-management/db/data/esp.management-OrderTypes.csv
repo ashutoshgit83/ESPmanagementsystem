@@ -1,0 +1,5 @@
+ID;code;name;description
+1a2b3c4d-1111-1111-1111-000000000001;STD_TM;Standard T&M;Standard Time and Material contract
+1a2b3c4d-1111-1111-1111-000000000002;PREM_TM;Premium T&M;Premium Time and Material with enhanced SLA
+1a2b3c4d-1111-1111-1111-000000000003;FIXED;Fixed Price;Fixed price contract for defined scope
+1a2b3c4d-1111-1111-1111-000000000004;FRAME;Frame/Framework;Multi-consuming framework agreement

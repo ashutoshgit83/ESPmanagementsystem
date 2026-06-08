@@ -1,0 +1,5 @@
+ID;customerNumber;customerName;country_code;contactName;contactEmail;isActive
+b1000001-aaaa-bbbb-cccc-000000000001;CUST-001;Bosch Automotive;DE;Thomas Weber;thomas.weber@bosch.com;true
+b1000001-aaaa-bbbb-cccc-000000000002;CUST-002;Bosch Power Tools;DE;Anna Fischer;anna.fischer@bosch.com;true
+b1000001-aaaa-bbbb-cccc-000000000003;CUST-003;Bosch Building Tech;DE;Klaus Meyer;klaus.meyer@bosch.com;true
+b1000001-aaaa-bbbb-cccc-000000000004;CUST-004;Bosch Connected Industry;DE;Sabine Wolf;sabine.wolf@bosch.com;true

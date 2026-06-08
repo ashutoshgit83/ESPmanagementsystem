@@ -1,0 +1,94 @@
+{
+  "name": "esp-management",
+  "version": "1.0.0",
+  "description": "CAP project: esp-management",
+  "scripts": {
+    "start": "cds watch",
+    "build": "cds build",
+    "watch": "cds watch --with-mocks --in-memory",
+    "deploy": "cds deploy",
+    "test": "npm run jest",
+    "jest": "jest",
+    "postinstall": "patch-package",
+    "cds-urlify": "node ../../scripts/urlify.js",
+    "generate-fiori": "node ../../fiori_cli_tool/headless.mjs ../../fiori_cli_tool/headless.json",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@cap-js/sqlite": "^1.11.1",
+    "@sap-cloud-sdk/connectivity": "^3.x",
+    "@sap-cloud-sdk/http-client": "^3.x",
+    "@sap-cloud-sdk/resilience": "^3.x",
+    "@sap-cloud-sdk/util": "^3.x",
+    "@sap/cds": "^8.9.4",
+    "hdb": "^2.27.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.x",
+    "eslint": "^8.x",
+    "jest": "^29.x",
+    "newman": "^6.x",
+    "nodemon": "^3.x",
+    "patch-package": "^8.x",
+    "prettier": "^3.x"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sql"
+      }
+    },
+    "[development]": {
+      "requires": {
+        "db": {
+          "kind": "sqlite",
+          "credentials": {
+            "url": ":memory:"
+          }
+        },
+        "auth": {
+          "kind": "mocked",
+          "users": {
+            "member": {
+              "password": "member",
+              "roles": ["ChapterAreaMember"],
+              "attr": { "ChapterArea": ["S2P"] }
+            },
+            "manager": {
+              "password": "manager",
+              "roles": ["ChapterAreaMember", "ChapterAreaManager"],
+              "attr": { "ChapterArea": ["S2P", "I2D"] }
+            },
+            "gpm": {
+              "password": "gpm",
+              "roles": ["ChapterAreaMember", "GPM_Backoffice"]
+            },
+            "admin": {
+              "password": "admin",
+              "roles": ["ChapterAreaMember", "ChapterAreaManager", "GPM_Backoffice", "SystemAdmin"]
+            }
+          }
+        }
+      }
+    },
+    "[hybrid]": {
+      "requires": {
+        "db": {
+          "kind": "hana-cloud"
+        }
+      }
+    },
+    "[production]": {
+      "requires": {
+        "db": {
+          "kind": "hana-cloud"
+        },
+        "auth": {
+          "kind": "xsuaa"
+        }
+      }
+    }
+  }
+}

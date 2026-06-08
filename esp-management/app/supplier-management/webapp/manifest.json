@@ -1,0 +1,89 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "esp.supplier",
+    "type": "application",
+    "title": "Supplier Management",
+    "description": "Manage External Service Provider master data",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "../odata/v4/master-data/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.120.45",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "models": {
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "SuppliersList",
+          "target": "SuppliersList"
+        },
+        {
+          "pattern": "Suppliers({key}):?query:",
+          "name": "SuppliersObjectPage",
+          "target": "SuppliersObjectPage"
+        }
+      ],
+      "targets": {
+        "SuppliersList": {
+          "type": "Component",
+          "id": "SuppliersList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Suppliers",
+              "variantManagement": "Page",
+              "navigation": {
+                "Suppliers": {
+                  "detail": {
+                    "route": "SuppliersObjectPage"
+                  }
+                }
+              },
+              "initialLoad": "Enabled"
+            }
+          }
+        },
+        "SuppliersObjectPage": {
+          "type": "Component",
+          "id": "SuppliersObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "contextPath": "/Suppliers",
+              "editableHeaderContent": false
+            }
+          }
+        }
+      }
+    },
+    "flexEnabled": false
+  }
+}

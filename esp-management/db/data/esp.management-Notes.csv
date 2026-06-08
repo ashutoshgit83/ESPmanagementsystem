@@ -1,0 +1,6 @@
+ID;entityType;entityId;noteType;subject;content;createdByName
+a4000001-aaaa-bbbb-cccc-000000000001;Supplier;a1000001-aaaa-bbbb-cccc-000000000001;Internal;Contract renewal 2026;Discussed rate card extension with Accenture for 2026. They are open to maintaining current rates if volume commitments above 2000 hours are met.;admin
+a4000001-aaaa-bbbb-cccc-000000000002;Supplier;a1000001-aaaa-bbbb-cccc-000000000002;CustomerFeedback;TCS delivery quality;Customer feedback from Bosch Building Tech: delivery quality is good but communication needs improvement on milestone tracking.;manager
+a4000001-aaaa-bbbb-cccc-000000000003;PurchaseOrder;c1000001-aaaa-bbbb-cccc-000000000001;Collaboration;Resource ramp-up plan;Team agreed to ramp up from 2 FTE to 3 FTE starting March. Need to update allocation accordingly.;member
+a4000001-aaaa-bbbb-cccc-000000000004;PurchaseOrder;c1000001-aaaa-bbbb-cccc-000000000004;Internal;Frame order multi-customer split;This frame order needs to be split across 4 customers. Waiting for allocation percentages from business.;gpm
+a4000001-aaaa-bbbb-cccc-000000000005;Invoice;e1000001-aaaa-bbbb-cccc-000000000002;Internal;Invoice discrepancy;Invoice amount does not match timesheet hours. Checking with supplier before approval.;manager

@@ -1,0 +1,78 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "esp.analytics",
+    "type": "application",
+    "title": "ESP Analytics Dashboard",
+    "description": "Portfolio analytics, KPIs, and financial reporting",
+    "applicationVersion": { "version": "1.0.0" },
+    "dataSources": {
+      "reportingService": {
+        "uri": "../odata/v4/reporting/",
+        "type": "OData",
+        "settings": { "odataVersion": "4.0" }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "sap-icon://business-objects-experience"
+    }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "esp.analytics.view.App",
+      "type": "XML",
+      "id": "app"
+    },
+    "dependencies": {
+      "minUI5Version": "1.120.45",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.viz": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "models": {
+      "": {
+        "dataSource": "reportingService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "dashboard": {
+        "type": "sap.ui.model.json.JSONModel",
+        "settings": {}
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "type": "View",
+        "viewType": "XML",
+        "viewPath": "esp.analytics.view",
+        "controlId": "app",
+        "controlAggregation": "pages"
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "dashboard",
+          "target": "dashboard"
+        }
+      ],
+      "targets": {
+        "dashboard": {
+          "viewName": "Dashboard",
+          "viewLevel": 1
+        }
+      }
+    }
+  }
+}

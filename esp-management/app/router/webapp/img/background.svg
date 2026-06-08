@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a2a3a;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#2c3e50;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#1a365d;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3498db;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#2ecc71;stop-opacity:0.3"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#bgGrad)"/>
+  <!-- Abstract network/connection lines (vendor management theme) -->
+  <g stroke="#3498db" stroke-width="0.5" fill="none" opacity="0.15">
+    <!-- Connection grid -->
+    <path d="M200,200 L400,150 L600,250 L800,180 L1000,220 L1200,160 L1400,200 L1600,180 L1800,250"/>
+    <path d="M100,400 L350,350 L550,450 L750,380 L950,420 L1150,360 L1350,400 L1550,380 L1750,450"/>
+    <path d="M200,600 L400,550 L600,650 L800,580 L1000,620 L1200,560 L1400,600 L1600,580 L1800,650"/>
+    <path d="M100,800 L350,750 L550,850 L750,780 L950,820 L1150,760 L1350,800 L1550,780 L1750,850"/>
+    <!-- Vertical connections -->
+    <path d="M400,150 L350,350 L400,550 L350,750"/>
+    <path d="M800,180 L750,380 L800,580 L750,780"/>
+    <path d="M1200,160 L1150,360 L1200,560 L1150,760"/>
+    <path d="M1600,180 L1550,380 L1600,580 L1550,780"/>
+  </g>
+  <!-- Nodes (representing vendors/partners) -->
+  <g fill="#3498db" opacity="0.2">
+    <circle cx="400" cy="150" r="8"/>
+    <circle cx="800" cy="180" r="10"/>
+    <circle cx="1200" cy="160" r="8"/>
+    <circle cx="1600" cy="180" r="10"/>
+    <circle cx="350" cy="350" r="6"/>
+    <circle cx="750" cy="380" r="8"/>
+    <circle cx="1150" cy="360" r="6"/>
+    <circle cx="1550" cy="380" r="8"/>
+    <circle cx="400" cy="550" r="8"/>
+    <circle cx="800" cy="580" r="10"/>
+    <circle cx="1200" cy="560" r="8"/>
+    <circle cx="1600" cy="580" r="10"/>
+    <circle cx="350" cy="750" r="6"/>
+    <circle cx="750" cy="780" r="8"/>
+    <circle cx="1150" cy="760" r="6"/>
+    <circle cx="1550" cy="780" r="8"/>
+  </g>
+  <!-- Accent circles (hubs) -->
+  <g fill="none" stroke="#2ecc71" stroke-width="1" opacity="0.1">
+    <circle cx="960" cy="540" r="200"/>
+    <circle cx="960" cy="540" r="300"/>
+    <circle cx="960" cy="540" r="400"/>
+  </g>
+  <!-- Central hub -->
+  <circle cx="960" cy="540" r="4" fill="#2ecc71" opacity="0.3"/>
+  <!-- Abstract building/office shapes at bottom -->
+  <g fill="#2c3e50" opacity="0.3">
+    <rect x="100" y="900" width="60" height="180" rx="2"/>
+    <rect x="180" y="850" width="80" height="230" rx="2"/>
+    <rect x="280" y="880" width="50" height="200" rx="2"/>
+    <rect x="1500" y="870" width="70" height="210" rx="2"/>
+    <rect x="1590" y="910" width="90" height="170" rx="2"/>
+    <rect x="1700" y="860" width="60" height="220" rx="2"/>
+    <rect x="1780" y="890" width="50" height="190" rx="2"/>
+  </g>
+  <!-- Subtle dotted pattern overlay -->
+  <g fill="#ffffff" opacity="0.02">
+    <pattern id="dots" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1"/>
+    </pattern>
+    <rect width="1920" height="1080" fill="url(#dots)"/>
+  </g>
+</svg>

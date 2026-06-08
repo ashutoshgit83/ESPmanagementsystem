@@ -1,0 +1,11 @@
+ID;timestamp;entityType;entityId;action;fieldName;oldValue;newValue;changedBy;changedAt
+a0000001-aaaa-bbbb-cccc-000000000001;2025-03-01T09:15:00Z;PurchaseOrder;c1000001-aaaa-bbbb-cccc-000000000001;Create;;;"PO PO-2025-001 created";admin;2025-03-01T09:15:00Z
+a0000001-aaaa-bbbb-cccc-000000000002;2025-03-01T09:20:00Z;PurchaseOrder;c1000001-aaaa-bbbb-cccc-000000000001;StatusChange;status;Draft;Pending;admin;2025-03-01T09:20:00Z
+a0000001-aaaa-bbbb-cccc-000000000003;2025-03-01T10:00:00Z;PurchaseOrder;c1000001-aaaa-bbbb-cccc-000000000001;StatusChange;status;Pending;Active;manager;2025-03-01T10:00:00Z
+a0000001-aaaa-bbbb-cccc-000000000004;2025-03-15T08:30:00Z;Invoice;e1000001-aaaa-bbbb-cccc-000000000001;Create;;;"Invoice INV-2025-0001 created";admin;2025-03-15T08:30:00Z
+a0000001-aaaa-bbbb-cccc-000000000005;2025-03-16T14:00:00Z;Invoice;e1000001-aaaa-bbbb-cccc-000000000001;StatusChange;status;Received;PendingApproval;admin;2025-03-16T14:00:00Z
+a0000001-aaaa-bbbb-cccc-000000000006;2025-03-17T09:00:00Z;Invoice;e1000001-aaaa-bbbb-cccc-000000000001;StatusChange;status;PendingApproval;Approved;manager;2025-03-17T09:00:00Z
+a0000001-aaaa-bbbb-cccc-000000000007;2025-03-20T11:30:00Z;Supplier;a1000001-aaaa-bbbb-cccc-000000000001;Create;;;"Supplier Accenture GmbH (SUP-001) created";admin;2025-03-20T11:30:00Z
+a0000001-aaaa-bbbb-cccc-000000000008;2025-04-01T08:00:00Z;Supplier;a1000001-aaaa-bbbb-cccc-000000000001;Update;tier;;Platinum;admin;2025-04-01T08:00:00Z
+a0000001-aaaa-bbbb-cccc-000000000009;2025-04-15T10:00:00Z;ConsumptionAllocation;ca000001-aaaa-bbbb-cccc-000000000001;Create;;;"Allocation for project PLW-2025-001 created";member;2025-04-15T10:00:00Z
+a0000001-aaaa-bbbb-cccc-000000000010;2025-05-01T09:00:00Z;Customer;b1000001-aaaa-bbbb-cccc-000000000001;Create;;;"Customer Bosch Automotive (CUST-001) created";admin;2025-05-01T09:00:00Z

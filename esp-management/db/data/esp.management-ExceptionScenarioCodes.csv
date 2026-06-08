@@ -1,0 +1,4 @@
+code;description
+Not Applicable;No exception - standard scenario
+Ordered HCB / Delivered LCB;Supplier ordered/invoiced from HCB but service delivered at LCB rate/location
+Ordered LCB / Billed HCB;Supplier ordered from LCB but billed from HCB entity

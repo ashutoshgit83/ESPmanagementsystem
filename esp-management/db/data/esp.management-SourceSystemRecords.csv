@@ -1,0 +1,6 @@
+ID;importBatch_ID;sourceRecordId;sourceSystem;extractDate;entityType;entityId;rawData;status;errorMessage
+54000001-aaaa-bbbb-cccc-000000000001;1b000001-aaaa-bbbb-cccc-000000000001;CID3-SUP-001;CID3;2025-01-20T08:00:00Z;Supplier;a1000001-aaaa-bbbb-cccc-000000000001;;Mapped;
+54000001-aaaa-bbbb-cccc-000000000002;1b000001-aaaa-bbbb-cccc-000000000001;CID3-SUP-002;CID3;2025-01-20T08:00:00Z;Supplier;a1000001-aaaa-bbbb-cccc-000000000002;;Mapped;
+54000001-aaaa-bbbb-cccc-000000000003;1b000001-aaaa-bbbb-cccc-000000000002;MYBUY-PO-001;MyBuy;2025-02-15T10:30:00Z;PurchaseOrder;c1000001-aaaa-bbbb-cccc-000000000001;;Mapped;
+54000001-aaaa-bbbb-cccc-000000000004;1b000001-aaaa-bbbb-cccc-000000000003;PICOS-INV-001;PICOS;2025-03-20T14:00:00Z;Invoice;e1000001-aaaa-bbbb-cccc-000000000001;;Mapped;
+54000001-aaaa-bbbb-cccc-000000000005;1b000001-aaaa-bbbb-cccc-000000000003;PICOS-INV-DUP;PICOS;2025-03-20T14:00:00Z;Invoice;;;Error;Duplicate invoice number: INV-DUP-001 already exists

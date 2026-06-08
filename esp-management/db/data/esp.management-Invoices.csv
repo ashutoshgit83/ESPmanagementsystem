@@ -1,0 +1,5 @@
+ID;invoiceNumber;invoiceDate;supplier_ID;currency_code;netValue;taxValue;grossValue;status;sourceSystem
+e1000001-aaaa-bbbb-cccc-000000000001;INV-2025-0001;2025-03-15;a1000001-aaaa-bbbb-cccc-000000000001;EUR;45000.00;8550.00;53550.00;Approved;PICOS
+e1000001-aaaa-bbbb-cccc-000000000002;INV-2025-0002;2025-04-01;a1000001-aaaa-bbbb-cccc-000000000002;EUR;32000.00;6080.00;38080.00;PendingApproval;Manual
+e1000001-aaaa-bbbb-cccc-000000000003;INV-2025-0003;2025-04-15;a1000001-aaaa-bbbb-cccc-000000000003;EUR;95000.00;18050.00;113050.00;Paid;PICOS
+e1000001-aaaa-bbbb-cccc-000000000004;INV-2025-0004;2025-05-01;a1000001-aaaa-bbbb-cccc-000000000004;EUR;28000.00;5320.00;33320.00;Received;Manual

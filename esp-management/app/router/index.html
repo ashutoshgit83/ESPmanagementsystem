@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner Management System</title>
+    <style>
+        html, body, #content {
+            height: 100%;
+            margin: 0;
+        }
+        #content {
+            background: 
+                linear-gradient(135deg, rgba(20, 30, 48, 0.92) 0%, rgba(36, 59, 85, 0.88) 50%, rgba(20, 40, 70, 0.92) 100%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><defs><radialGradient id="g1" cx="30%25" cy="40%25" r="60%25"><stop offset="0%25" style="stop-color:%233498db;stop-opacity:0.12"/><stop offset="100%25" style="stop-color:%233498db;stop-opacity:0"/></radialGradient><radialGradient id="g2" cx="75%25" cy="65%25" r="50%25"><stop offset="0%25" style="stop-color:%232ecc71;stop-opacity:0.08"/><stop offset="100%25" style="stop-color:%232ecc71;stop-opacity:0"/></radialGradient></defs><rect width="1920" height="1080" fill="%231a2a3a"/><rect width="1920" height="1080" fill="url(%23g1)"/><rect width="1920" height="1080" fill="url(%23g2)"/><g stroke="%234a90d9" stroke-width="1" fill="none" opacity="0.15"><circle cx="300" cy="250" r="120"/><circle cx="960" cy="400" r="180"/><circle cx="1600" cy="300" r="140"/><circle cx="500" cy="700" r="100"/><circle cx="1400" cy="750" r="130"/><line x1="300" y1="250" x2="960" y2="400"/><line x1="960" y1="400" x2="1600" y2="300"/><line x1="300" y1="250" x2="500" y2="700"/><line x1="960" y1="400" x2="1400" y2="750"/><line x1="960" y1="400" x2="500" y2="700"/><line x1="1600" y1="300" x2="1400" y2="750"/></g><g fill="%234a90d9" opacity="0.25"><circle cx="300" cy="250" r="8"/><circle cx="960" cy="400" r="12"/><circle cx="1600" cy="300" r="8"/><circle cx="500" cy="700" r="6"/><circle cx="1400" cy="750" r="8"/></g><g fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.04"><circle cx="960" cy="540" r="250"/><circle cx="960" cy="540" r="380"/><circle cx="960" cy="540" r="500"/></g><g fill="%23ffffff" opacity="0.06"><rect x="140" y="850" width="45" height="230" rx="3"/><rect x="200" y="800" width="65" height="280" rx="3"/><rect x="280" y="830" width="40" height="250" rx="3"/><rect x="340" y="870" width="55" height="210" rx="3"/><rect x="1480" y="840" width="55" height="240" rx="3"/><rect x="1550" y="810" width="70" height="270" rx="3"/><rect x="1640" y="860" width="45" height="220" rx="3"/><rect x="1700" y="820" width="60" height="260" rx="3"/><rect x="1775" y="855" width="45" height="225" rx="3"/></g><text x="960" y="950" text-anchor="middle" font-family="Arial" font-size="14" fill="%23ffffff" opacity="0.08">VENDOR NETWORK</text></svg>') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-attachment: fixed !important;
+        }
+        .sapMPage, .sapMPageBgStandard, .sapMPageBgSolid, .sapMPageBgTransparent,
+        .sapMShell, .sapMApp, .sapUiComponentContainer {
+            background: transparent !important;
+        }
+        .sapMPageHeader .sapMBar {
+            background: rgba(15, 25, 40, 0.9) !important;
+            border-bottom: 1px solid rgba(74, 144, 217, 0.3) !important;
+        }
+        .sapMPageHeader .sapMTitle,
+        .sapMPageHeader .sapMText,
+        .sapMBar .sapMTitle,
+        .sapMBar .sapMText {
+            color: #ffffff !important;
+        }
+        .sapMTitle.sapMTitleStyleH4 {
+            color: rgba(255,255,255,0.85) !important;
+        }
+        .sapMGT {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+        }
+    </style>
+    <script id="sap-ui-bootstrap"
+        src="https://sapui5.hana.ondemand.com/1.133.0/resources/sap-ui-core.js"
+        data-sap-ui-theme="sap_horizon"
+        data-sap-ui-compatVersion="edge"
+        data-sap-ui-async="true"
+        data-sap-ui-onInit="module:sap/ui/core/ComponentSupport"
+        data-sap-ui-resourceroots='{ "esp.launchpad": "./webapp/" }'>
+    </script>
+</head>
+<body class="sapUiBody" id="content">
+    <div data-sap-ui-component
+         data-name="esp.launchpad"
+         data-id="container"
+         data-settings='{ "id": "esp.launchpad" }'>
+    </div>
+<script src="/common/esp-chat-widget.js"></script>
+</body>
+</html>

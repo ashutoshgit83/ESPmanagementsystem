@@ -1,0 +1,46 @@
+<mvc:View controllerName="esp.chatbot.controller.Chat"
+    xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core">
+    <App>
+        <Page showHeader="true" enableScrolling="false">
+            <customHeader>
+                <Bar design="Header">
+                    <contentLeft>
+                        <core:Icon src="sap-icon://discussion" size="1.2rem" class="sapUiTinyMarginEnd"/>
+                        <Title text="ESP Assistant" level="H4"/>
+                    </contentLeft>
+                </Bar>
+            </customHeader>
+            <content>
+                <VBox height="100%" justifyContent="SpaceBetween">
+                    <!-- Chat Messages -->
+                    <ScrollContainer id="chatScroll" height="calc(100vh - 140px)" vertical="true">
+                        <VBox id="chatMessages" class="sapUiSmallMargin" items="{chat>/messages}">
+                            <HBox justifyContent="{= ${chat>sender} === 'bot' ? 'Start' : 'End'}" class="sapUiTinyMarginBottom">
+                                <VBox class="{= ${chat>sender} === 'bot' ? 'sapUiTinyMarginEnd' : 'sapUiTinyMarginBegin'}"
+                                      width="{= ${chat>sender} === 'bot' ? '80%' : '70%'}">
+                                    <MessageStrip
+                                        text="{chat>text}"
+                                        type="{= ${chat>sender} === 'bot' ? 'Information' : 'None'}"
+                                        showIcon="{= ${chat>sender} === 'bot'}"
+                                        showCloseButton="false"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                    </ScrollContainer>
+
+                    <!-- Quick Reply Buttons -->
+                    <HBox visible="{chat>/showQuickReplies}" wrap="Wrap" class="sapUiSmallMargin">
+                        <core:Fragment fragmentName="esp.chatbot.view.QuickReplies" type="XML"/>
+                    </HBox>
+
+                    <!-- Input Bar -->
+                    <Toolbar class="sapUiTinyMarginTop">
+                        <Input id="chatInput" placeholder="Type your question..." value="{chat>/inputValue}"
+                               submit=".onSendMessage" width="100%"/>
+                        <Button icon="sap-icon://paper-plane" type="Emphasized" press=".onSendMessage"/>
+                    </Toolbar>
+                </VBox>
+            </content>
+        </Page>
+    </App>
+</mvc:View>

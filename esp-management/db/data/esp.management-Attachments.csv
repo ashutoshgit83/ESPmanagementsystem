@@ -1,0 +1,4 @@
+ID;entityType;entityId;fileName;mimeType;fileSize;description
+a7000001-aaaa-bbbb-cccc-000000000001;Supplier;a1000001-aaaa-bbbb-cccc-000000000001;Accenture_RateCard_2025.pdf;application/pdf;245000;Global rate card agreement 2025
+a7000001-aaaa-bbbb-cccc-000000000002;PurchaseOrder;c1000001-aaaa-bbbb-cccc-000000000001;PO_2025_001_SOW.docx;application/vnd.openxmlformats-officedocument.wordprocessingml.document;128000;Statement of Work - SAP S/4HANA Development
+a7000001-aaaa-bbbb-cccc-000000000003;Invoice;e1000001-aaaa-bbbb-cccc-000000000001;INV_2025_0001_Timesheet.xlsx;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;52000;Timesheet backup for invoice INV-2025-0001

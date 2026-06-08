@@ -1,0 +1,27 @@
+{
+  "settings": {
+    "cds": {
+      "workspaceValidationMode": "OpenEditorsOnly",
+      "logging": {
+        "level": "debug"
+      },
+      "validation": {
+        "edmx": true,
+        "odata": true,
+        "annotations": true,
+        "expressions": true,
+        "syntax": true
+      },
+      "language": {
+        "fileExtensions": [
+          ".cds",
+          ".asddls",
+          ".asdcls",
+          ".asddlxs"
+        ],
+        "scopeName": "source.abapcds",
+        "snippets": true
+      }
+    }
+  }
+}

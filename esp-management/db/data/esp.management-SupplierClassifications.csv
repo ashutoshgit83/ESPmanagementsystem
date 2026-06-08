@@ -1,0 +1,9 @@
+ID;supplier_ID;classificationType;classificationValue;validFrom;validTo
+5c000001-aaaa-bbbb-cccc-000000000001;a1000001-aaaa-bbbb-cccc-000000000001;RateCard;Global;2024-01-01;2026-12-31
+5c000001-aaaa-bbbb-cccc-000000000002;a1000001-aaaa-bbbb-cccc-000000000001;Tier;Platinum;2024-01-01;2026-12-31
+5c000001-aaaa-bbbb-cccc-000000000003;a1000001-aaaa-bbbb-cccc-000000000002;RateCard;Regional APAC;2024-01-01;2025-12-31
+5c000001-aaaa-bbbb-cccc-000000000004;a1000001-aaaa-bbbb-cccc-000000000002;Tier;Gold;2024-01-01;2025-12-31
+5c000001-aaaa-bbbb-cccc-000000000005;a1000001-aaaa-bbbb-cccc-000000000003;OEM;SAP Licensed Partner;2023-01-01;2027-12-31
+5c000001-aaaa-bbbb-cccc-000000000006;a1000001-aaaa-bbbb-cccc-000000000004;RateCard;Regional APAC;2024-06-01;2026-05-31
+5c000001-aaaa-bbbb-cccc-000000000007;a1000001-aaaa-bbbb-cccc-000000000005;RateCard;Global;2025-01-01;2026-12-31
+5c000001-aaaa-bbbb-cccc-000000000008;a1000001-aaaa-bbbb-cccc-000000000005;Tier;Silver;2025-01-01;2026-12-31

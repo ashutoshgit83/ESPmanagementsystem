@@ -1,0 +1,7 @@
+ID;supplier_ID;firstName;lastName;email;phone;role;isPrimary
+cc000001-aaaa-bbbb-cccc-000000000001;a1000001-aaaa-bbbb-cccc-000000000001;Hans;Mueller;hans.mueller@accenture.com;+49 711 1234567;Account Manager;true
+cc000001-aaaa-bbbb-cccc-000000000002;a1000001-aaaa-bbbb-cccc-000000000001;Lisa;Weber;lisa.weber@accenture.com;+49 711 1234568;Delivery Lead;false
+cc000001-aaaa-bbbb-cccc-000000000003;a1000001-aaaa-bbbb-cccc-000000000002;Rajesh;Kumar;rajesh.kumar@tcs.com;+91 80 12345678;Program Manager;true
+cc000001-aaaa-bbbb-cccc-000000000004;a1000001-aaaa-bbbb-cccc-000000000003;Maria;Schmidt;maria.schmidt@sap.com;+49 6227 123456;Partner Manager;true
+cc000001-aaaa-bbbb-cccc-000000000005;a1000001-aaaa-bbbb-cccc-000000000004;Priya;Sharma;priya.sharma@infosys.com;+91 80 98765432;Engagement Manager;true
+cc000001-aaaa-bbbb-cccc-000000000006;a1000001-aaaa-bbbb-cccc-000000000005;Pierre;Dupont;pierre.dupont@capgemini.com;+33 1 12345678;Account Director;true
